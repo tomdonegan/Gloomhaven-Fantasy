@@ -1,0 +1,55 @@
+-- Code at line 3 replaces drop-down menu code
+
+<VerticalLayout id="buttons" padding="0 0 0 20" rectAlignment="UpperRight" offsetXY="-250 0" height="110" width="164">
+   <Button onClick="showBI">
+      <Image image="BI Drawer"></Image>
+   </Button>
+   <Button id="showSpawner" onClick="spawnerClicked">
+      <Image image="Game Setup"></Image>
+   </Button>
+   <Button id="showCamControls" onClick="cameraControls">
+      <Image image="Camera Controls"></Image>
+   </Button>
+</VerticalLayout>
+
+<Button height="35" width="300" rectAlignment="UpperLeft" offsetXY="100 0" fontStyle="Bold" fontSize="18" onClick="showIni">
+   <Image image="Initiative Drawer"></Image>
+</Button>
+
+-- Camera Control UI
+
+<Panel
+  id="CameraControl"
+  visibility="false"
+  height="120"
+  width="150"
+  rectAlignment="UpperRight"
+  offsetXY="-257 -90"
+  allowDragging="true"
+  showAnimation="FadeIn"
+  hideAnimation="FadeOut"
+  animationDuration="5"
+  returnToOriginalPositionWhenReleased="false">
+  <VerticalLayout spacing="1">
+    <Button height="40" width="150" offsetXY="0 150" fontStyle="Bold" fontSize="18" onClick="cameraPosition(showScenarioBoard)">
+      <Image image="Scenario"></Image>
+    </Button>
+    <Button height="40" width="150" offsetXY="0 110" fontStyle="Bold" fontSize="18" onClick="cameraPosition(showGameBoard)">
+       <Image image="Play Area"></Image>
+    </Button>
+    <HorizontalLayout spacing="1">
+      <Button onClick="cameraPosition(One)">
+        <Image image="One"></Image>
+      </Button>
+      <Button onClick="cameraPosition(Two)">
+        <Image image="Two"></Image>
+      </Button>
+      <Button onClick="cameraPosition(Three)">
+        <Image image="Three"></Image>
+      </Button>
+      <Button onClick="cameraPosition(Four)">
+        <Image image="Four"></Image>
+      </Button>
+    </HorizontalLayout>
+  </VerticalLayout>
+</Panel>

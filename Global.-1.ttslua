@@ -1,0 +1,78 @@
+function cameraControls(player, value, id)
+  if id == "showCamControls" then
+    showCamForPlayer({panel = "CameraControl", color = player.color})
+  end
+end
+
+function cameraPosition(player, button)
+  local color
+  color = player.color
+  if button == "One" then
+    Player[color].lookAt({
+        position = {x=-36,y=0,z=-40},
+        pitch    = 90,
+        yaw      = 0,
+        distance = 25,
+    })
+  elseif button == "Two" then
+    Player[color].lookAt({
+        position = {x=-12,y=0,z=-40},
+        pitch    = 90,
+        yaw      = 0,
+        distance = 25,
+    })
+  elseif button == "Three" then
+    Player[color].lookAt({
+        position = {x=12,y=0,z=-40},
+        pitch    = 90,
+        yaw      = 0,
+        distance = 25,
+    })
+  elseif button == "Four" then
+    Player[color].lookAt({
+        position = {x=36,y=0,z=-40},
+        pitch    = 90,
+        yaw      = 0,
+        distance = 25,
+    })
+  elseif button == "showScenarioBoard" then
+    Player[color].lookAt({
+        position = {x=0,y=0,z=4.5},
+        pitch    = 65,
+        yaw      = 0,
+        distance = 40,
+    })
+  elseif button == "showGameBoard" then
+    Player[color].lookAt({
+        position = {x=0,y=0,z=-20},
+        pitch    = 90,
+        yaw      = 0,
+        distance = 25,
+    })
+  end
+end
+
+function showCamForPlayer(params)
+   local panel = params.panel
+   local color = params.color
+   local opened = self.UI.getAttribute(panel, "visibility")
+   if opened == nil then opened = "" end
+   if opened:find(color) then
+      opened = opened:gsub("|" .. color, "")
+      opened = opened:gsub(color .. "|", "")
+      opened = opened:gsub(color, "")
+      self.UI.setAttribute(panel, "visibility", opened)
+      if opened == "" then
+         self.UI.setAttribute(panel, "active", "false")
+         shown.CameraControls = false
+      end
+   else
+      if shown.CameraControls == false then
+         self.UI.setAttribute(panel, "active", "true")
+         self.UI.setAttribute(panel, "visibility", color)
+         shown.CameraControls = true
+      else
+         self.UI.setAttribute(panel, "visibility", opened .. "|" .. color)
+      end
+   end
+end
